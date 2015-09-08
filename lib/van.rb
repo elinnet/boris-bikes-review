@@ -2,7 +2,7 @@ require_relative 'bike_container'
 
 class Van
 
-  include BikeContainer
+  include BikeContainer 
 
   def take_bike bike
     fail "The van is full" if @bikes.count >= @capacity
