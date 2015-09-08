@@ -1,16 +1,9 @@
-
+require_relative 'bike_container'
 
 class Garage
-  def initialize
-    @bikes = []
-  end
+  include BikeContainer
 
-
-  def receive_bike bike
-    @bikes << bike
-  end
-
-  def repair_bikes
+  def fix_bikes
     @bikes.each{|bike| bike.fix }
   end
 

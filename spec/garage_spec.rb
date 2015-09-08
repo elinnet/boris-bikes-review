@@ -1,12 +1,13 @@
 require 'garage'
-require 'bike'
+require 'support/shared_examples_for_bike_container'
 
 describe Garage do
+    it_behaves_like BikeContainer
 
-    xit 'repairs broken bikes' do
-      bike = double :bike, working?: false, fix: nil
-      subject.receive_bike bike
-      subject.repair_bikes
-      expect(bike).to be_working
+    it 'fixes broken bikes' do
+      bike = double :bike, broken?: false, fix: nil
+      subject.add_bike bike
+      subject.fix_bikes
+      expect(bike).not_to be_broken
     end
 end
