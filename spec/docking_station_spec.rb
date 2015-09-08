@@ -39,7 +39,13 @@ describe DockingStation do
       subject.capacity = 50
       expect(subject.capacity).to eq 50
     end
-
   end
 
+  describe "#load_van" do
+    it "reports error when no broken bikes" do
+      bike = double :bike, working?: true
+      subject.dock bike
+      expect { subject.load_van bike }.to raise_error 'No broken bikes'
+    end
+  end
 end

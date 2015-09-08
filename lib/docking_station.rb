@@ -1,4 +1,5 @@
 require_relative 'bike'
+require_relative 'van'
 require 'byebug'
 
 class DockingStation
@@ -22,6 +23,11 @@ class DockingStation
     @bikes << bike
   end
 
+  def load_van(bike)
+    fail 'No broken bikes' if no_broken_bikes?
+    @bikes.delete_at(@bikes.index{ |bike| bike.broken? })
+  end
+
   private
 
   def full?
@@ -33,6 +39,10 @@ class DockingStation
   end
 
   def no_working_bikes?
-    bikes.none? { |bike| bike.working? }
+    @bikes.none? { |bike| bike.working? }
+  end
+
+  def no_broken_bikes?
+    @bikes.all? { |bike| bike.working? }
   end
 end
