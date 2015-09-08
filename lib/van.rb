@@ -1,4 +1,5 @@
 
+
 class Van
 
   DEFAULT_CAPACITY = 25
